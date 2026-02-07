@@ -1,0 +1,67 @@
+{
+    "name": "bussola-para-jerusalem",
+    "version": "1.0.0",
+    "description": "Bússola Sagrada que aponta para Jerusalém — GPS + Google Maps + Bússola 3D",
+    "author": "Marcos Fernando - C4 Corporation <c4corpbeats@gmail.com>",
+    "license": "UNLICENSED",
+    "private": true,
+    "main": "electron/main.js",
+    "homepage": "https://chat.whatsapp.com/C9KfyK7InB00wJ2jRFDtOr",
+    "scripts": {
+        "start": "npx serve www -l 8080",
+        "build:android": "npx cap sync android && npx cap open android",
+        "sync": "npx cap sync",
+        "open:android": "npx cap open android",
+        "electron": "electron .",
+        "electron:dev": "electron . --dev",
+        "electron:build": "electron-builder --win --x64",
+        "electron:build:mac": "electron-builder --mac",
+        "electron:build:linux": "electron-builder --linux"
+    },
+    "dependencies": {
+        "@capacitor/android": "^6.0.0",
+        "@capacitor/core": "^6.0.0",
+        "@capacitor/geolocation": "^6.0.0",
+        "@capacitor/motion": "^6.0.0"
+    },
+    "devDependencies": {
+        "@capacitor/cli": "^6.0.0",
+        "electron": "^33.0.0",
+        "electron-builder": "^25.0.0",
+        "serve": "^14.0.0",
+        "sharp": "^0.34.5"
+    },
+    "build": {
+        "appId": "com.c4corporation.bussolajerusalem",
+        "productName": "Bússola para Jerusalém",
+        "copyright": "© 2026 Marcos Fernando — C4 Corporation",
+        "directories": {
+            "output": "dist-electron"
+        },
+        "files": [
+            "electron/**/*",
+            "www/**/*"
+        ],
+        "win": {
+            "target": ["nsis"],
+            "icon": "www/assets/img/icon-512.png"
+        },
+        "nsis": {
+            "oneClick": true,
+            "allowToChangeInstallationDirectory": false,
+            "installerIcon": "www/assets/img/icon-512.png",
+            "uninstallerIcon": "www/assets/img/icon-512.png",
+            "shortcutName": "Bússola para Jerusalém"
+        },
+        "mac": {
+            "target": ["dmg"],
+            "icon": "www/assets/img/icon-512.png",
+            "category": "public.app-category.navigation"
+        },
+        "linux": {
+            "target": ["AppImage", "deb"],
+            "icon": "www/assets/img/icon-512.png",
+            "category": "Utility"
+        }
+    }
+}

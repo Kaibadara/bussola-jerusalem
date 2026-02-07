@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bússola para Jerusalém — Aplicativo sagrado que aponta para a Cidade Santa. Desenvolvido por Marcos Fernando — C4 Corp.">
+    <meta name="author" content="Marcos Fernando — C4 Corp">
+    <title>Bússola para Jerusalém — Sobre o Aplicativo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700&family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="www/assets/img/icon-192.png">
+    <style>
+        /* ═══════════════════════════════════════════════════
+           BÚSSOLA PARA JERUSALÉM — PÁGINA SOBRE
+           © 2026 Marcos Fernando — C4 Corp
+           Todos os direitos reservados.
+        ═══════════════════════════════════════════════════ */
+
+        :root {
+            --gold-primary: #c4a35a;
+            --gold-light: #e8d5a3;
+            --gold-dark: #8b7332;
+            --gold-glow: #ffd700;
+            --bg-dark: #0a0600;
+            --bg-primary: #1a0f04;
+            --bg-secondary: #2a1a08;
+            --bg-card: #1e1208;
+            --text-primary: #e8d5a3;
+            --text-secondary: #c4a35a;
+            --text-muted: #8b7a5e;
+            --text-bright: #fff5e0;
+            --font-decorative: 'Cinzel Decorative', serif;
+            --font-heading: 'Cinzel', serif;
+            --font-body: 'Frank Ruhl Libre', serif;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ─── BACKGROUND PARTICLES ─── */
+        .bg-particles {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .bg-particles span {
+            position: absolute;
+            width: 3px; height: 3px;
+            background: var(--gold-primary);
+            border-radius: 50%;
+            opacity: 0;
+            animation: floatParticle 8s infinite ease-in-out;
+        }
+        .bg-particles span:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .bg-particles span:nth-child(2) { left: 25%; animation-delay: 1.2s; }
+        .bg-particles span:nth-child(3) { left: 40%; animation-delay: 2.4s; }
+        .bg-particles span:nth-child(4) { left: 55%; animation-delay: 3.6s; }
+        .bg-particles span:nth-child(5) { left: 70%; animation-delay: 4.8s; }
+        .bg-particles span:nth-child(6) { left: 85%; animation-delay: 6s; }
+        .bg-particles span:nth-child(7) { left: 15%; animation-delay: 1s; }
+        .bg-particles span:nth-child(8) { left: 60%; animation-delay: 3s; }
+        @keyframes floatParticle {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            30% { opacity: 0.6; }
+            70% { opacity: 0.3; }
+            100% { transform: translateY(-20vh) scale(1.2); opacity: 0; }
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+            background: 
+                radial-gradient(ellipse at 50% 30%, rgba(196,163,90,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 50% 80%, rgba(26,58,106,0.08) 0%, transparent 50%),
+                var(--bg-dark);
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" opacity="0.03"><text y="100" x="30" font-size="120" fill="%23c4a35a">✡</text></svg>');
+            background-size: 200px;
+            animation: bgScroll 60s linear infinite;
+        }
+        @keyframes bgScroll {
+            0% { background-position: 0 0; }
+            100% { background-position: 200px 200px; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        /* Star of David */
+        .star-container {
+            width: 120px; height: 120px;
+            margin: 0 auto 30px;
+            position: relative;
+            animation: starFloat 4s ease-in-out infinite;
+        }
+        @keyframes starFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+        .star-container::after {
+            content: '✡';
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            color: var(--gold-primary);
+            filter: drop-shadow(0 0 20px rgba(196,163,90,0.5));
+        }
+        .star-glow {
+            position: absolute;
+            inset: -20px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(196,163,90,0.2) 0%, transparent 70%);
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.3); opacity: 1; }
+        }
+
+        .hero-hebrew {
+            font-family: var(--font-decorative);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: var(--gold-primary);
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 30px rgba(196,163,90,0.4);
+        }
+
+        .hero-title {
+            font-family: var(--font-decorative);
+            font-size: clamp(2rem, 6vw, 4rem);
+            color: var(--text-bright);
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-verse {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            font-style: italic;
+            max-width: 500px;
+            margin: 0 auto 30px;
+            line-height: 1.8;
+        }
+        .hero-verse span {
+            display: block;
+            color: var(--gold-dark);
+            margin-top: 8px;
+            font-size: 0.9rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 10px 30px;
+            border: 1px solid var(--gold-primary);
+            border-radius: 30px;
+            color: var(--gold-primary);
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            background: rgba(196,163,90,0.05);
+            animation: badgePulse 3s ease-in-out infinite;
+        }
+        @keyframes badgePulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(196,163,90,0.2); }
+            50% { box-shadow: 0 0 0 12px rgba(196,163,90,0); }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--gold-dark);
+            font-size: 1.5rem;
+            animation: bounce 2s ease-in-out infinite;
+            z-index: 1;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* ─── SECTION GENERAL ─── */
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 80px 20px;
+        }
+        .section-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .section-label {
+            font-family: var(--font-heading);
+            font-size: 0.75rem;
+            color: var(--gold-dark);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .section-title {
+            font-family: var(--font-decorative);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: var(--text-bright);
+            text-align: center;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .section-desc {
+            text-align: center;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto 50px;
+            font-size: 1.05rem;
+        }
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+            margin: 20px auto 40px;
+        }
+
+        /* ─── ABOUT / O QUE É ─── */
+        .about-section {
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(196,163,90,0.04) 0%, transparent 50%),
+                var(--bg-dark);
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .about-text h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--gold-light);
+            margin-bottom: 15px;
+        }
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+        .about-text p strong {
+            color: var(--gold-primary);
+        }
+
+        .about-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Phone Mockup */
+        .phone-mockup {
+            width: 280px;
+            height: 560px;
+            background: #111;
+            border-radius: 36px;
+            border: 3px solid #333;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 20px 60px rgba(0,0,0,0.6),
+                0 0 40px rgba(196,163,90,0.1),
+                inset 0 0 0 2px #222;
+        }
+        .phone-notch {
+            position: absolute;
+            top: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 120px; height: 28px;
+            background: #111;
+            border-radius: 0 0 18px 18px;
+            z-index: 5;
+        }
+        .phone-screen {
+            position: absolute;
+            inset: 8px;
+            border-radius: 28px;
+            overflow: hidden;
+            background: var(--bg-primary);
+        }
+        .mockup-content {
+            width: 100%; height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px 60px;
+            background: 
+                radial-gradient(circle at 50% 40%, rgba(196,163,90,0.06) 0%, transparent 60%),
+                var(--bg-primary);
+        }
+        .mockup-compass {
+            width: 140px; height: 140px;
+            border-radius: 50%;
+            border: 2px solid var(--gold-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            position: relative;
+            background: radial-gradient(circle, rgba(196,163,90,0.08) 0%, transparent 70%);
+            box-shadow: 0 0 30px rgba(196,163,90,0.15);
+        }
+        .mockup-compass::before {
+            content: '🧭';
+            font-size: 56px;
+            animation: compassSpin 6s ease-in-out infinite;
+        }
+        @keyframes compassSpin {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(15deg); }
+            75% { transform: rotate(-15deg); }
+        }
+        .mockup-compass .cardinal {
+            position: absolute;
+            font-family: var(--font-heading);
+            font-size: 0.6rem;
+            color: var(--gold-dark);
+        }
+        .cardinal.n { top: 6px; }
+        .cardinal.s { bottom: 6px; }
+        .cardinal.e { right: 8px; }
+        .cardinal.w { left: 8px; }
+
+        .mockup-label {
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            color: var(--gold-primary);
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+        }
+        .mockup-distance {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        .mockup-nav {
+            position: absolute;
+            bottom: 8px;
+            left: 8px; right: 8px;
+            height: 48px;
+            background: rgba(26,15,4,0.95);
+            border-radius: 0 0 28px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 0 10px;
+            border-top: 1px solid rgba(196,163,90,0.15);
+        }
+        .mockup-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+        .mockup-nav-item span:first-child {
+            font-size: 16px;
+        }
+        .mockup-nav-item span:last-child {
+            font-size: 0.5rem;
+            color: var(--text-muted);
+            font-family: var(--font-heading);
+            letter-spacing: 0.5px;
+        }
+        .mockup-nav-item.active span:last-child {
+            color: var(--gold-primary);
+        }
+
+        /* ─── FEATURES ─── */
+        .features-section {
+            background:
+                radial-gradient(ellipse at 80% 20%, rgba(196,163,90,0.04) 0%, transparent 50%),
+                var(--bg-dark);
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--gold-primary);
+            border-opacity: 0.15;
+            border-color: rgba(196,163,90,0.15);
+            border-radius: 16px;
+            padding: 30px 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold-dark), var(--gold-primary), var(--gold-dark));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(196,163,90,0.3);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4), 0 0 20px rgba(196,163,90,0.08);
+        }
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .feature-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--gold-light);
+            margin-bottom: 10px;
+        }
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ─── SCREENS SHOWCASE ─── */
+        .screens-section {
+            background:
+                radial-gradient(ellipse at 50% 50%, rgba(196,163,90,0.05) 0%, transparent 60%),
+                var(--bg-dark);
+        }
+        .screens-row {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .screen-item {
+            text-align: center;
+        }
+        .screen-mini {
+            width: 180px;
+            height: 340px;
+            background: #111;
+            border-radius: 24px;
+            border: 2px solid #333;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: transform 0.3s;
+        }
+        .screen-mini:hover {
+            transform: scale(1.05);
+        }
+        .screen-inner {
+            position: absolute;
+            inset: 6px;
+            border-radius: 18px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 30px 12px;
+        }
+
+        /* Screen variations */
+        .screen-compass .screen-inner {
+            background: radial-gradient(circle at 50% 40%, rgba(196,163,90,0.1) 0%, var(--bg-primary) 70%);
+        }
+        .screen-compass .screen-inner::before {
+            content: '🧭';
+            font-size: 60px;
+            margin-bottom: 10px;
+            animation: compassSpin 6s ease-in-out infinite;
+        }
+        .screen-compass .screen-inner::after {
+            content: 'JERUSALÉM • 315°';
+            font-family: var(--font-heading);
+            font-size: 0.6rem;
+            color: var(--gold-primary);
+            letter-spacing: 2px;
+        }
+
+        .screen-map .screen-inner {
+            background: 
+                linear-gradient(rgba(26,58,106,0.3), rgba(26,15,4,0.8)),
+                linear-gradient(45deg, #1a3a4a 25%, #0d2233 25%, #0d2233 50%, #1a3a4a 50%, #1a3a4a 75%, #0d2233 75%);
+            background-size: 100%, 20px 20px;
+        }
+        .screen-map .screen-inner::before {
+            content: '🗺️';
+            font-size: 50px;
+            margin-bottom: 8px;
+        }
+        .screen-map .screen-inner::after {
+            content: 'MAPA SAGRADO';
+            font-family: var(--font-heading);
+            font-size: 0.6rem;
+            color: var(--gold-primary);
+            letter-spacing: 2px;
+        }
+
+        .screen-community .screen-inner {
+            background: var(--bg-primary);
+            gap: 8px;
+        }
+        .screen-community .screen-inner::before {
+            content: '👥';
+            font-size: 40px;
+        }
+        .screen-community .comm-posts {
+            width: 90%;
+        }
+        .comm-post-mini {
+            background: rgba(196,163,90,0.05);
+            border: 1px solid rgba(196,163,90,0.1);
+            border-radius: 8px;
+            padding: 8px;
+            margin-bottom: 6px;
+            text-align: left;
+        }
+        .comm-post-mini .name {
+            font-size: 0.5rem;
+            color: var(--gold-primary);
+            font-family: var(--font-heading);
+        }
+        .comm-post-mini .text {
+            font-size: 0.45rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .screen-music .screen-inner {
+            background: radial-gradient(circle at 50% 60%, rgba(196,163,90,0.08) 0%, var(--bg-primary) 70%);
+        }
+        .screen-music .screen-inner::before {
+            content: '🎵';
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+        .screen-music .screen-inner::after {
+            content: 'MELODIAS HEBRAICAS';
+            font-family: var(--font-heading);
+            font-size: 0.55rem;
+            color: var(--gold-primary);
+            letter-spacing: 2px;
+        }
+        .music-bars {
+            display: flex;
+            gap: 3px;
+            align-items: flex-end;
+            height: 30px;
+            margin-top: 10px;
+        }
+        .music-bars span {
+            width: 4px;
+            background: var(--gold-primary);
+            border-radius: 2px;
+            animation: musicBar 1s ease-in-out infinite alternate;
+        }
+        .music-bars span:nth-child(1) { height: 10px; animation-delay: 0s; }
+        .music-bars span:nth-child(2) { height: 18px; animation-delay: 0.15s; }
+        .music-bars span:nth-child(3) { height: 12px; animation-delay: 0.3s; }
+        .music-bars span:nth-child(4) { height: 24px; animation-delay: 0.45s; }
+        .music-bars span:nth-child(5) { height: 16px; animation-delay: 0.6s; }
+        .music-bars span:nth-child(6) { height: 20px; animation-delay: 0.75s; }
+        .music-bars span:nth-child(7) { height: 8px; animation-delay: 0.9s; }
+        @keyframes musicBar {
+            0% { transform: scaleY(0.4); }
+            100% { transform: scaleY(1); }
+        }
+
+        .screen-donate .screen-inner {
+            background: var(--bg-primary);
+        }
+        .screen-donate .screen-inner::before {
+            content: '💝';
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        .qr-placeholder {
+            width: 70px; height: 70px;
+            border: 2px solid var(--gold-primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.5rem;
+            color: var(--gold-dark);
+            font-family: var(--font-heading);
+            letter-spacing: 1px;
+        }
+
+        .screen-label {
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            color: var(--gold-primary);
+            letter-spacing: 2px;
+            margin-top: 14px;
+            text-transform: uppercase;
+        }
+
+        /* ─── TECH SECTION ─── */
+        .tech-section {
+            background: var(--bg-dark);
+        }
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .tech-item {
+            background: var(--bg-card);
+            border: 1px solid rgba(196,163,90,0.1);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .tech-item:hover {
+            border-color: rgba(196,163,90,0.3);
+            transform: translateY(-2px);
+        }
+        .tech-item .tech-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .tech-item h4 {
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            color: var(--gold-light);
+            margin-bottom: 5px;
+        }
+        .tech-item p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ─── PLATFORMS ─── */
+        .platforms-section {
+            background: 
+                radial-gradient(ellipse at 30% 70%, rgba(196,163,90,0.04) 0%, transparent 50%),
+                var(--bg-dark);
+        }
+        .platforms-row {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .platform-item {
+            text-align: center;
+            padding: 30px;
+            background: var(--bg-card);
+            border: 1px solid rgba(196,163,90,0.1);
+            border-radius: 16px;
+            min-width: 180px;
+            transition: all 0.3s;
+        }
+        .platform-item:hover {
+            border-color: rgba(196,163,90,0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .platform-item .plat-icon {
+            font-size: 3rem;
+            margin-bottom: 12px;
+        }
+        .platform-item h4 {
+            font-family: var(--font-heading);
+            color: var(--gold-light);
+            margin-bottom: 5px;
+        }
+        .platform-item p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ─── COPYRIGHT FOOTER ─── */
+        .footer {
+            background: var(--bg-primary);
+            border-top: 1px solid rgba(196,163,90,0.1);
+            padding: 60px 20px 30px;
+            text-align: center;
+        }
+        .footer-star {
+            font-size: 2.5rem;
+            color: var(--gold-primary);
+            filter: drop-shadow(0 0 10px rgba(196,163,90,0.3));
+            margin-bottom: 20px;
+        }
+        .footer-brand {
+            font-family: var(--font-decorative);
+            font-size: 1.3rem;
+            color: var(--gold-light);
+            margin-bottom: 5px;
+        }
+        .footer-company {
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            color: var(--gold-primary);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .footer-divider {
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-dark), transparent);
+            margin: 20px auto;
+        }
+        .footer-copyright {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 2;
+        }
+        .footer-copyright strong {
+            color: var(--gold-primary);
+        }
+        .footer-legal {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 15px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+            opacity: 0.7;
+        }
+        .footer-verse {
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 25px;
+            opacity: 0.6;
+        }
+
+        /* ─── NAV ─── */
+        .site-nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+        .site-nav.scrolled {
+            background: rgba(10,6,0,0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(196,163,90,0.1);
+        }
+        .nav-logo {
+            font-family: var(--font-decorative);
+            font-size: 1rem;
+            color: var(--gold-primary);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--gold-primary);
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .about-visual {
+                order: -1;
+            }
+            .phone-mockup {
+                width: 240px;
+                height: 480px;
+            }
+            .screens-row {
+                gap: 20px;
+            }
+            .screen-mini {
+                width: 150px;
+                height: 280px;
+            }
+            .nav-links {
+                display: none;
+            }
+            .platforms-row {
+                gap: 20px;
+            }
+            .platform-item {
+                min-width: 140px;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .screen-mini {
+                width: 130px;
+                height: 240px;
+            }
+        }
+
+        /* ─── FADE IN ANIMATION ─── */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Particles -->
+    <div class="bg-particles">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="site-nav" id="siteNav">
+        <a href="#" class="nav-logo">✡ Bússola</a>
+        <ul class="nav-links">
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#funcionalidades">Funções</a></li>
+            <li><a href="#telas">Interface</a></li>
+            <li><a href="#tecnologias">Tech</a></li>
+            <li><a href="#plataformas">Plataformas</a></li>
+        </ul>
+    </nav>
+
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="star-container">
+                <div class="star-glow"></div>
+            </div>
+            <p class="hero-hebrew">בּוּסוּלָה לִירוּשָׁלַיִם</p>
+            <h1 class="hero-title">Bússola para Jerusalém</h1>
+            <div class="hero-verse">
+                <p>"Se eu me esquecer de ti, ó Jerusalém,<br>que a minha mão direita se esqueça da sua destreza."</p>
+                <span>— Salmo 137:5</span>
+            </div>
+            <div class="hero-badge">Aplicativo Sagrado</div>
+        </div>
+        <div class="scroll-indicator">▼</div>
+    </section>
+
+    <!-- ═══════════════ SOBRE O APP ═══════════════ -->
+    <section class="about-section" id="sobre">
+        <div class="section-container">
+            <p class="section-label">Conheça o App</p>
+            <h2 class="section-title">O que é a Bússola para Jerusalém?</h2>
+            <div class="divider"></div>
+            <p class="section-desc">Um aplicativo sagrado que conecta você espiritualmente à Cidade Santa, não importa onde esteja no mundo.</p>
+
+            <div class="about-grid fade-in">
+                <div class="about-text">
+                    <h3>Sua Conexão com a Terra Santa</h3>
+                    <p>
+                        A <strong>Bússola para Jerusalém</strong> é um aplicativo espiritual e tecnológico que utiliza 
+                        geolocalização em tempo real e sensores do dispositivo para indicar a direção exata de 
+                        <strong>Jerusalém</strong> — a cidade mais sagrada do mundo.
+                    </p>
+                    <p>
+                        Inspirado na tradição milenar de orar voltado para Jerusalém, o app oferece uma 
+                        <strong>bússola 3D interativa</strong>, cálculos de distância via fórmula de Haversine, 
+                        mapa sagrado, melodias hebraicas autênticas, salmos diários e uma comunidade de fiéis.
+                    </p>
+                    <p>
+                        Com design inspirado em temas sacros hebraicos, fontes decorativas clássicas 
+                        e uma paleta de cores dourada sobre fundo escuro, a experiência é ao mesmo tempo 
+                        <strong>reverente e moderna</strong>.
+                    </p>
+                </div>
+                <div class="about-visual">
+                    <!-- Phone Mockup -->
+                    <div class="phone-mockup">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen">
+                            <div class="mockup-content">
+                                <div class="mockup-compass">
+                                    <span class="cardinal n">N</span>
+                                    <span class="cardinal s">S</span>
+                                    <span class="cardinal e">L</span>
+                                    <span class="cardinal w">O</span>
+                                </div>
+                                <p class="mockup-label">JERUSALÉM</p>
+                                <p class="mockup-distance">★ 10.245 km · 315° NW</p>
+                            </div>
+                            <div class="mockup-nav">
+                                <div class="mockup-nav-item active">
+                                    <span>🧭</span>
+                                    <span>Bússola</span>
+                                </div>
+                                <div class="mockup-nav-item">
+                                    <span>🗺️</span>
+                                    <span>Mapa</span>
+                                </div>
+                                <div class="mockup-nav-item">
+                                    <span>👥</span>
+                                    <span>Social</span>
+                                </div>
+                                <div class="mockup-nav-item">
+                                    <span>💝</span>
+                                    <span>Apoiar</span>
+                                </div>
+                                <div class="mockup-nav-item">
+                                    <span>⚙️</span>
+                                    <span>Opções</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ FUNCIONALIDADES ═══════════════ -->
+    <section class="features-section" id="funcionalidades">
+        <div class="section-container">
+            <p class="section-label">Recursos</p>
+            <h2 class="section-title">Funcionalidades Principais</h2>
+            <div class="divider"></div>
+            <p class="section-desc">Cada recurso foi desenvolvido com cuidado e reverência, unindo fé e tecnologia.</p>
+
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <span class="feature-icon">🧭</span>
+                    <h3>Bússola 3D Sagrada</h3>
+                    <p>Bússola interativa com rotação 3D em tempo real que aponta diretamente para Jerusalém (31.7683°N, 35.2137°E). Usa a API DeviceOrientation com indicador de calibração e vibração ao alinhar com a Cidade Santa.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <span class="feature-icon">🗺️</span>
+                    <h3>Mapa Sagrado</h3>
+                    <p>Mapa estático via Google Static Maps API com suporte a temas claro e escuro. Mostra sua posição e a direção de Jerusalém com atualização dinâmica baseada na geolocalização.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <span class="feature-icon">📖</span>
+                    <h3>Salmo Diário</h3>
+                    <p>32 salmos sagrados disponíveis offline, selecionados automaticamente pelo dia do ano. Uma reflexão espiritual diária para fortalecer sua conexão com o Altíssimo.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <span class="feature-icon">🎵</span>
+                    <h3>Melodias Hebraicas</h3>
+                    <p>Player de músicas geradas em tempo real com Web Audio API usando a escala Ahava Raba, autêntica da tradição musical hebraica. Músicas como "Hava Nagila", "Shalom Aleichem" e mais.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <span class="feature-icon">👥</span>
+                    <h3>Comunidade de Fiéis</h3>
+                    <p>Rede social integrada com autenticação por email e Google Sign-In. Compartilhe orações, comentários, curtidas e receba notificações da comunidade.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <span class="feature-icon">💝</span>
+                    <h3>Apoio via PIX</h3>
+                    <p>Sistema de doação com QR Code PIX gerado no padrão EMV/BRCode. Valores pré-definidos e personalizáveis para apoiar o desenvolvimento contínuo do app.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <span class="feature-icon">📍</span>
+                    <h3>Geolocalização Precisa</h3>
+                    <p>Rastreamento GPS com cálculo de distância pela fórmula de Haversine e bearing (rumo) em tempo real para Jerusalém, com indicadores de direção cardinal.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <span class="feature-icon">🌙</span>
+                    <h3>Tema Claro & Escuro</h3>
+                    <p>Interface com tema sacro hebraico em modo escuro (dourado sobre negro) e modo claro, com persistência de preferência no armazenamento local.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <span class="feature-icon">📲</span>
+                    <h3>PWA — Funciona Offline</h3>
+                    <p>Progressive Web App com Service Worker, cache inteligente (cache-first para estáticos, network-first para APIs) e instalação direto do navegador.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ TELAS DO APP ═══════════════ -->
+    <section class="screens-section" id="telas">
+        <div class="section-container">
+            <p class="section-label">Interface</p>
+            <h2 class="section-title">Telas do Aplicativo</h2>
+            <div class="divider"></div>
+            <p class="section-desc">Uma interface sagrada, elegante e intuitiva com 5 abas principais.</p>
+
+            <div class="screens-row fade-in">
+                <!-- Tela Bússola -->
+                <div class="screen-item">
+                    <div class="screen-mini screen-compass">
+                        <div class="screen-inner"></div>
+                    </div>
+                    <p class="screen-label">Bússola</p>
+                </div>
+
+                <!-- Tela Mapa -->
+                <div class="screen-item">
+                    <div class="screen-mini screen-map">
+                        <div class="screen-inner"></div>
+                    </div>
+                    <p class="screen-label">Mapa</p>
+                </div>
+
+                <!-- Tela Comunidade -->
+                <div class="screen-item">
+                    <div class="screen-mini screen-community">
+                        <div class="screen-inner">
+                            <div class="comm-posts">
+                                <div class="comm-post-mini">
+                                    <div class="name">Sara M.</div>
+                                    <div class="text">Que o Senhor abençoe a todos!</div>
+                                </div>
+                                <div class="comm-post-mini">
+                                    <div class="name">David R.</div>
+                                    <div class="text">Shalom! Orando por Jerusalém 🙏</div>
+                                </div>
+                                <div class="comm-post-mini">
+                                    <div class="name">Ana L.</div>
+                                    <div class="text">App maravilhoso, uso todo dia!</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="screen-label">Comunidade</p>
+                </div>
+
+                <!-- Tela Música -->
+                <div class="screen-item">
+                    <div class="screen-mini screen-music">
+                        <div class="screen-inner">
+                            <div class="music-bars">
+                                <span></span><span></span><span></span>
+                                <span></span><span></span><span></span><span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="screen-label">Melodias</p>
+                </div>
+
+                <!-- Tela Apoiar -->
+                <div class="screen-item">
+                    <div class="screen-mini screen-donate">
+                        <div class="screen-inner">
+                            <div class="qr-placeholder">QR PIX</div>
+                        </div>
+                    </div>
+                    <p class="screen-label">Apoiar</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ TECNOLOGIAS ═══════════════ -->
+    <section class="tech-section" id="tecnologias">
+        <div class="section-container">
+            <p class="section-label">Sob o Capô</p>
+            <h2 class="section-title">Tecnologias Utilizadas</h2>
+            <div class="divider"></div>
+
+            <div class="tech-grid fade-in">
+                <div class="tech-item">
+                    <div class="tech-icon">⚡</div>
+                    <h4>HTML5 + CSS3 + JS</h4>
+                    <p>Frontend puro, sem frameworks</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🐍</div>
+                    <h4>Flask (Python)</h4>
+                    <p>Backend API REST</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">📱</div>
+                    <h4>Capacitor 6</h4>
+                    <p>Build nativo Android APK</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🖥️</div>
+                    <h4>Electron</h4>
+                    <p>Desktop Windows/Mac/Linux</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🔐</div>
+                    <h4>Google OAuth 2.0</h4>
+                    <p>Autenticação segura</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🎶</div>
+                    <h4>Web Audio API</h4>
+                    <p>Melodias em tempo real</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">📡</div>
+                    <h4>DeviceOrientation</h4>
+                    <p>Bússola por sensores</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🗄️</div>
+                    <h4>SQLite</h4>
+                    <p>Banco de dados leve</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">⚙️</div>
+                    <h4>Service Worker</h4>
+                    <p>Cache offline (PWA)</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🌍</div>
+                    <h4>Geolocation API</h4>
+                    <p>GPS + Haversine</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ PLATAFORMAS ═══════════════ -->
+    <section class="platforms-section" id="plataformas">
+        <div class="section-container">
+            <p class="section-label">Disponibilidade</p>
+            <h2 class="section-title">Onde Usar</h2>
+            <div class="divider"></div>
+
+            <div class="platforms-row fade-in">
+                <div class="platform-item">
+                    <div class="plat-icon">🌐</div>
+                    <h4>Navegador</h4>
+                    <p>PWA — Chrome, Edge, Firefox, Safari</p>
+                </div>
+                <div class="platform-item">
+                    <div class="plat-icon">📱</div>
+                    <h4>Android</h4>
+                    <p>APK nativo via Capacitor</p>
+                </div>
+                <div class="platform-item">
+                    <div class="plat-icon">🖥️</div>
+                    <h4>Desktop</h4>
+                    <p>Windows, macOS & Linux via Electron</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ FOOTER — DIREITOS AUTORAIS ═══════════════ -->
+    <footer class="footer">
+        <div class="footer-star">✡</div>
+        <h3 class="footer-brand">Bússola para Jerusalém</h3>
+        <p class="footer-company">Marcos Fernando — C4 Corp</p>
+        <div class="footer-divider"></div>
+        <div class="footer-copyright">
+            <p>© 2026 <strong>Marcos Fernando</strong> — <strong>C4 Corporation</strong></p>
+            <p>Todos os direitos reservados.</p>
+        </div>
+        <p class="footer-legal">
+            Este aplicativo, incluindo todo o seu código-fonte, design, interface gráfica, 
+            conteúdo textual, logotipos, ícones e elementos visuais, é propriedade intelectual 
+            exclusiva de <strong>Marcos Fernando</strong>, operando sob a marca <strong>C4 Corp</strong> 
+            (C4 Corporation). É proibida a reprodução, distribuição, modificação ou uso comercial 
+            sem autorização prévia e expressa do titular dos direitos.
+        </p>
+        <div class="footer-divider"></div>
+        <p class="footer-verse">
+            "Orai pela paz de Jerusalém; prosperarão aqueles que te amam." — Salmo 122:6
+        </p>
+    </footer>
+
+    <script>
+        // ─── Navbar scroll effect ───
+        const nav = document.getElementById('siteNav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // ─── Fade-in on scroll ───
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>

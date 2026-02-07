@@ -1,0 +1,20 @@
+{
+    "appId": "com.c4corporation.bussolajerusalem",
+    "appName": "Bússola para Jerusalém",
+    "webDir": "www",
+    "server": {
+        "androidScheme": "https"
+    },
+    "plugins": {
+        "Geolocation": {
+            "iosLocationPermission": "Este app precisa da sua localização para apontar a direção de Jerusalém.",
+            "androidLocationPermission": "Este app precisa da sua localização para apontar a direção de Jerusalém."
+        }
+    },
+    "android": {
+        "backgroundColor": "#1a0a00",
+        "allowMixedContent": true,
+        "captureInput": true,
+        "webContentsDebuggingEnabled": false
+    }
+}
